@@ -12,7 +12,6 @@ from datetime import datetime
 
 import cv2
 import numpy as np
-import pyautogui
 import win32api
 import win32con
 import win32gui
@@ -197,6 +196,7 @@ class ImageListWindow(QWidget):
         self.move(-10, -10)
         # 显示窗口
         self.show()
+
 
     def create_double_click_event(self, name):
         def mouseDoubleClickEvent(event):
@@ -605,8 +605,10 @@ class MainWindow(QWidget):
             self.is_open = not self.is_open
             print(f"开启状态：{self.is_open}")
             if self.is_open:
+                self.imClass.show()
                 winsound.PlaySound('music/8855.wav', flags=1)
             else:
+                self.imClass.hide()
                 winsound.PlaySound('music/close.wav', flags=1)
 
     def keyboard_listener(self):
